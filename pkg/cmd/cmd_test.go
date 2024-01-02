@@ -17,7 +17,7 @@ import (
 	cmdutil "k8s.io/kubectl/pkg/cmd/util"
 	"k8s.io/kubectl/pkg/scheme"
 
-	"github.com/micnncim/kubectl-reap/pkg/determiner"
+	"github.com/guppy0130/kubectl-reap/pkg/determiner"
 )
 
 func Test_runner_Run(t *testing.T) {

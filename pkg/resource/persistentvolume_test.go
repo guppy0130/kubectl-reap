@@ -44,7 +44,7 @@ func TestCheckVolumeSatisfyClaim(t *testing.T) {
 				},
 				claim: &corev1.PersistentVolumeClaim{
 					Spec: corev1.PersistentVolumeClaimSpec{
-						Resources: corev1.ResourceRequirements{
+						Resources: corev1.VolumeResourceRequirements{
 							Requests: corev1.ResourceList{
 								corev1.ResourceName(corev1.ResourceStorage): apiresource.MustParse(fakeResourceQtyLow),
 							},
@@ -77,7 +77,7 @@ func TestCheckVolumeSatisfyClaim(t *testing.T) {
 				},
 				claim: &corev1.PersistentVolumeClaim{
 					Spec: corev1.PersistentVolumeClaimSpec{
-						Resources: corev1.ResourceRequirements{
+						Resources: corev1.VolumeResourceRequirements{
 							Requests: corev1.ResourceList{
 								corev1.ResourceName(corev1.ResourceStorage): apiresource.MustParse(fakeResourceQtyLow),
 							},

@@ -24,10 +24,10 @@ import (
 	cmdutil "k8s.io/kubectl/pkg/cmd/util"
 	cmdwait "k8s.io/kubectl/pkg/cmd/wait"
 
-	"github.com/micnncim/kubectl-reap/pkg/determiner"
-	"github.com/micnncim/kubectl-reap/pkg/prompt"
-	"github.com/micnncim/kubectl-reap/pkg/resource"
-	"github.com/micnncim/kubectl-reap/pkg/version"
+	"github.com/guppy0130/kubectl-reap/pkg/determiner"
+	"github.com/guppy0130/kubectl-reap/pkg/prompt"
+	"github.com/guppy0130/kubectl-reap/pkg/resource"
+	"github.com/guppy0130/kubectl-reap/pkg/version"
 )
 
 const (
@@ -83,7 +83,6 @@ type runner struct {
 	showVersion bool
 
 	dryRunStrategy cmdutil.DryRunStrategy
-	dryRunVerifier *cliresource.DryRunVerifier
 
 	deleteOpts *metav1.DeleteOptions
 
@@ -197,12 +196,6 @@ func (r *runner) Complete(f cmdutil.Factory, args []string, cmd *cobra.Command) 
 	}
 	resourceClient := resource.NewClient(clientset, r.dynamicClient)
 
-	discoveryClient, err := f.ToDiscoveryClient()
-	if err != nil {
-		return err
-	}
-	r.dryRunVerifier = cliresource.NewDryRunVerifier(r.dynamicClient, discoveryClient)
-
 	namespace := r.namespace
 	if r.allNamespaces {
 		namespace = metav1.NamespaceAll
@@ -290,11 +283,6 @@ func (r *runner) Run(ctx context.Context, f cmdutil.Factory) error {
 		if r.dryRunStrategy == cmdutil.DryRunClient && !r.quiet {
 			r.printObj(info.Object)
 			return nil // skip deletion
-		}
-		if r.dryRunStrategy == cmdutil.DryRunServer {
-			if err := r.dryRunVerifier.HasSupport(info.Mapping.GroupVersionKind); err != nil {
-				return err
-			}
 		}
 
 		resp, err := cliresource.

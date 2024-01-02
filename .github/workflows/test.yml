@@ -7,24 +7,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-go@v2
-        id: go
+      - name: Set up Go
+        uses: actions/setup-go@v5
         with:
-          go-version: 1.15
-
-      - uses: actions/cache@v2
-        id: cache
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
+          go-version-file: 'go.mod'
 
       - run: go test -v -race -coverprofile=coverage.out ./...
 
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v4
         with:
           files: coverage.out
-          verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}

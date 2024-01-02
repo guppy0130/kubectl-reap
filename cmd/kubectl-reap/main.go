@@ -6,7 +6,7 @@ import (
 
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 
-	"github.com/micnncim/kubectl-reap/pkg/cmd"
+	"github.com/guppy0130/kubectl-reap/pkg/cmd"
 )
 
 func main() {
