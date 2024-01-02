@@ -11,7 +11,7 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	cliresource "k8s.io/cli-runtime/pkg/resource"
 
-	"github.com/micnncim/kubectl-reap/pkg/resource"
+	"github.com/guppy0130/kubectl-reap/pkg/resource"
 )
 
 var checkVolumeSatisfyClaimFunc = resource.CheckVolumeSatisfyClaim

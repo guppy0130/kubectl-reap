@@ -2,13 +2,14 @@ name: Lint
 
 on:
   pull_request_target:
-    types: [opened, synchronize]
+    types:
+      - opened
+      - synchronize
 
 jobs:
   lint:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: reviewdog/action-golangci-lint@v1
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-golangci-lint@v2

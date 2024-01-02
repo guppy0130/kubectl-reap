@@ -1,14 +1,6 @@
 # kubectl-reap
 
-[![actions-workflow-test][actions-workflow-test-badge]][actions-workflow-test]
-[![release][release-badge]][release]
-[![codecov][codecov-badge]][codecov]
-[![pkg.go.dev][pkg.go.dev-badge]][pkg.go.dev]
-[![license][license-badge]][license]
-
 `kubectl-reap` is a kubectl plugin that deletes unused Kubernetes resources.
-
-![screencast](/docs/assets/screencast.gif)
 
 Supported resources:
 
@@ -29,25 +21,25 @@ Before getting started, read [the caveats of using this plugin](#caveats).
 
 ## Installation
 
-Download precompiled binaries from [GitHub Releases](https://github.com/micnncim/kubectl-reap/releases).
+Download precompiled binaries from [GitHub Releases](https://github.com/guppy0130/kubectl-reap/releases).
 
 ### Via [Krew](https://github.com/kubernetes-sigs/krew)
 
-```
-$ kubectl krew install reap
+```sh
+kubectl krew install reap
 ```
 
 ### Via Homebrew
 
-```
-$ brew tap micnncim/kubectl-reap https://github.com/micnncim/kubectl-reap
-$ brew install kubectl-reap
+```sh
+brew tap guppy0130/kubectl-reap https://github.com/guppy0130/kubectl-reap
+brew install kubectl-reap
 ```
 
 ### Via Go
 
-```
-$ go get github.com/micnncim/kubectl-reap/cmd/kubectl-reap
+```sh
+go get github.com/guppy0130/kubectl-reap/cmd/kubectl-reap
 ```
 
 ## Examples
@@ -155,7 +147,7 @@ Flags:
       --allow-missing-template-keys    If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. (default true)
       --as string                      Username to impersonate for the operation
       --as-group stringArray           Group to impersonate for the operation, this flag can be repeated to specify multiple groups.
-      --cache-dir string               Default cache directory (default "/Users/micnncim/.kube/cache")
+      --cache-dir string               Default cache directory (default "/Users/guppy0130/.kube/cache")
       --certificate-authority string   Path to a cert file for the certificate authority
       --client-certificate string      Path to a client certificate file for TLS
       --client-key string              Path to a client key file for TLS
@@ -190,33 +182,10 @@ Flags:
 - It's recommended to run this plugin as dry-run (`--dry-run=client` or `--dry-run=server`) first or interactive mode (`--interactive`) in order to examine what resources will be deleted when running it, especially when you're trying to run it in a production environment.
 - Even if you use `--namespace kube-system` or `--all-namespaces`, this plugin never deletes any resources in `kube-system` so that it prevents unexpected resource deletion.
 - This plugin doesn't determine whether custom controllers or CRDs consume or depend on the supported resources. Make sure the resources you want to reap aren't used by them.
-  - e.g.) A Secret which isn't used by any Pods or ServiceAccounts but used by [cert-manager](https://cert-manager.io) can be deleted
+  - e.g., a Secret which isn't used by any Pods or ServiceAccounts but used by [cert-manager](https://cert-manager.io) can be deleted
 
 ## Background
 
 `kubectl apply --prune` allows us to delete unused resources.
 However, it's not very flexible when we want to choose what kind resource to be deleted.
 This plugin provides more flexible, easy way to delete resources.
-
-## Similar Projects
-
-- [dtan4/k8s-unused-secret-detector](https://github.com/dtan4/k8s-unused-secret-detector)
-- [FikaWorks/kubectl-plugins/prune-unused](https://github.com/FikaWorks/kubectl-plugins/tree/master/prune-unused)
-- [dirathea/kubectl-unused-volumes](https://github.com/dirathea/kubectl-unused-volumes)
-
-<!-- badge links -->
-
-[actions-workflow-test]: https://github.com/micnncim/kubectl-reap/actions?query=workflow%3ATest
-[actions-workflow-test-badge]: https://img.shields.io/github/workflow/status/micnncim/kubectl-reap/Test?label=Test&style=for-the-badge&logo=github
-
-[release]: https://github.com/micnncim/kubectl-reap/releases
-[release-badge]: https://img.shields.io/github/v/release/micnncim/kubectl-reap?style=for-the-badge&logo=github
-
-[codecov]: https://codecov.io/gh/micnncim/kubectl-reap
-[codecov-badge]: https://img.shields.io/codecov/c/github/micnncim/kubectl-reap?style=for-the-badge&logo=codecov
-
-[pkg.go.dev]: https://pkg.go.dev/github.com/micnncim/kubectl-reap?tab=overview
-[pkg.go.dev-badge]: http://bit.ly/pkg-go-dev-badge
-
-[license]: LICENSE
-[license-badge]: https://img.shields.io/github/license/micnncim/kubectl-reap?style=for-the-badge

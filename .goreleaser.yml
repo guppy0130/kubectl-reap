@@ -1,18 +1,52 @@
+version: 2
+project_name: "kubectl-reap"
+
+release:
+  github:
+    owner: "guppy0130"
+    name: "kubectl-reap"
+
 builds:
-- main: ./cmd/kubectl-reap/main.go
-  ldflags: 
-    - -s -w
-    - -X github.com/micnncim/kubectl-reap/pkg/version.Version={{.Tag}}
-    - -X github.com/micnncim/kubectl-reap/pkg/version.Revision={{.ShortCommit}}
-  goos:
-  - linux
-  - darwin
-  - windows
+  - id: "kubectl-reap"
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - "amd64"
+      - "arm64"
+    goarm:
+      - "7"
+    env:
+      - CGOENABLED=0
+      - GO111MODULE=on
+    main: ./cmd/kubectl-reap/main.go
+    ldflags:
+      - -s -w
+      - -X github.com/guppy0130/kubectl-reap/pkg/version.Version={{.Tag}}
+      - -X github.com/guppy0130/kubectl-reap/pkg/version.Revision={{.ShortCommit}}
+
+archives:
+  - format: "tar.gz"
+    id: "kubectl-reap"
+    builds:
+      - "kubectl-reap"
 
 brews:
-  - tap:
-      owner: micnncim
+  - repository:
+      owner: guppy0130
       name: kubectl-reap
-    folder: Formula
-    homepage: https://github.com/micnncim/kubectl-reap
+    homepage: https://github.com/guppy0130/kubectl-reap
     description: kubectl plugin that deletes unused Kubernetes resources
+
+krews:
+  - name: "kubectl-reap"
+    ids:
+      - "kubectl-reap"
+    goarm: 7
+    description: kubectl plugin that deletes unused Kubernetes resources
+    short_description: kubectl plugin that deletes unused Kubernetes resources
+    homepage: https://github.com/guppy0130/kubectl-reap
+    repository:
+      owner: guppy0130
+      name: kubectl-reap

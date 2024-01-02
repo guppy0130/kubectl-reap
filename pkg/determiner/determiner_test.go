@@ -15,7 +15,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	cliresource "k8s.io/cli-runtime/pkg/resource"
 
-	"github.com/micnncim/kubectl-reap/pkg/resource"
+	"github.com/guppy0130/kubectl-reap/pkg/resource"
 )
 
 func Test_determiner_DetermineDeletion(t *testing.T) {
@@ -710,7 +710,7 @@ func Test_determiner_determineUsedSecret(t *testing.T) {
 				pods: []*corev1.Pod{
 					{
 						Spec: corev1.PodSpec{
-							ImagePullSecrets: []corev1.LocalObjectReference{{fakeSecret}}},
+							ImagePullSecrets: []corev1.LocalObjectReference{{Name: fakeSecret}}},
 					},
 				},
 			},
