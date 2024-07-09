@@ -5,23 +5,47 @@
 class KubectlReap < Formula
   desc "kubectl plugin that deletes unused Kubernetes resources"
   homepage "https://github.com/guppy0130/kubectl-reap"
-  version "0.11.3"
-  bottle :unneeded
+  version "0.12.1"
 
-  if OS.mac?
-    url "https://github.com/guppy0130/kubectl-reap/releases/download/v0.11.3/kubectl-reap_0.11.3_darwin_amd64.tar.gz"
-    sha256 "53c2074e2dcab8c4d513013de9bd9746f4c4504c4bf07fb4956607de4766ed20"
-  end
-  if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/guppy0130/kubectl-reap/releases/download/v0.11.3/kubectl-reap_0.11.3_linux_amd64.tar.gz"
-    sha256 "ceec75c07a030717f2658a77c459767b653c31b9f204d767633535f28af57295"
-  end
-  if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/guppy0130/kubectl-reap/releases/download/v0.11.3/kubectl-reap_0.11.3_linux_arm64.tar.gz"
-    sha256 "4af1337b93f2098eb5138349a6692b5a616470a7d2372890cd99cb3c30f7f532"
+  on_macos do
+    on_intel do
+      url "https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.1/kubectl-reap_0.12.1_darwin_amd64.tar.gz"
+      sha256 "2def779db91c0d732767149826924791e3fe635dcf8c40317f0cc83b056ca2f9"
+
+      def install
+        bin.install "kubectl-reap"
+      end
+    end
+    on_arm do
+      url "https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.1/kubectl-reap_0.12.1_darwin_arm64.tar.gz"
+      sha256 "6729eac20ad3cc9627703d21d144ab4abb66667344dab1e3709750bd62eb4272"
+
+      def install
+        bin.install "kubectl-reap"
+      end
+    end
   end
 
-  def install
-    bin.install "kubectl-reap"
+  on_linux do
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.1/kubectl-reap_0.12.1_linux_amd64.tar.gz"
+        sha256 "96d1ae8306cce50514dc311a739a8b90dd0787d9162e155321d965784dba87dc"
+
+        def install
+          bin.install "kubectl-reap"
+        end
+      end
+    end
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.1/kubectl-reap_0.12.1_linux_arm64.tar.gz"
+        sha256 "ddbc2b7be0aba9fa302a23ae1d6616549a37dcfca9f21869bc42e18c1ba098eb"
+
+        def install
+          bin.install "kubectl-reap"
+        end
+      end
+    end
   end
 end
