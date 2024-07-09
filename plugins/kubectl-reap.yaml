@@ -4,46 +4,46 @@ kind: Plugin
 metadata:
   name: kubectl-reap
 spec:
-  version: v0.12.0
+  version: v0.12.1
   platforms:
     - bin: kubectl-reap.exe
-      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.0/kubectl-reap_0.12.0_windows_arm64.tar.gz
-      sha256: 65f6d3e09a82e71cd1fd7258efc8736cbbc689a5526ff7d023d5b720914db02b
+      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.1/kubectl-reap_0.12.1_windows_arm64.tar.gz
+      sha256: a188c3e37a26fd487feb40fb1dcb0cc5208bfaa60d80b7b2c1ea7de3a7441c16
       selector:
         matchLabels:
           os: windows
           arch: arm64
     - bin: kubectl-reap.exe
-      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.0/kubectl-reap_0.12.0_windows_amd64.tar.gz
-      sha256: 8205e23a6c4d0da79aec2ce2b2bfae67d4ec9f6d05a5e9f087726ab5bc760d94
+      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.1/kubectl-reap_0.12.1_windows_amd64.tar.gz
+      sha256: 847865f7180f6a336ca8bc25683881545d7e8efa91fc4276a5110c0ce4f4ff8d
       selector:
         matchLabels:
           os: windows
           arch: amd64
     - bin: kubectl-reap
-      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.0/kubectl-reap_0.12.0_linux_arm64.tar.gz
-      sha256: a352620894ced15429bd0a9cddb3c3ec798082ace124e40908504636cacc6a11
+      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.1/kubectl-reap_0.12.1_linux_arm64.tar.gz
+      sha256: ddbc2b7be0aba9fa302a23ae1d6616549a37dcfca9f21869bc42e18c1ba098eb
       selector:
         matchLabels:
           os: linux
           arch: arm64
     - bin: kubectl-reap
-      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.0/kubectl-reap_0.12.0_linux_amd64.tar.gz
-      sha256: 70205717b29299f393a5df797a4f7a7433ad7d926a4563c5dc42976abfee4879
+      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.1/kubectl-reap_0.12.1_linux_amd64.tar.gz
+      sha256: 96d1ae8306cce50514dc311a739a8b90dd0787d9162e155321d965784dba87dc
       selector:
         matchLabels:
           os: linux
           arch: amd64
     - bin: kubectl-reap
-      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.0/kubectl-reap_0.12.0_darwin_arm64.tar.gz
-      sha256: 9487d4fe58b833279441deff49338063d7b16af270e0b52709001f8e114a51ad
+      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.1/kubectl-reap_0.12.1_darwin_arm64.tar.gz
+      sha256: 6729eac20ad3cc9627703d21d144ab4abb66667344dab1e3709750bd62eb4272
       selector:
         matchLabels:
           os: darwin
           arch: arm64
     - bin: kubectl-reap
-      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.0/kubectl-reap_0.12.0_darwin_amd64.tar.gz
-      sha256: e3b55e763e51d014d706eae2ce8e5906f2a31e97f2e298994633922bf9f5ce5e
+      uri: https://github.com/guppy0130/kubectl-reap/releases/download/v0.12.1/kubectl-reap_0.12.1_darwin_amd64.tar.gz
+      sha256: 2def779db91c0d732767149826924791e3fe635dcf8c40317f0cc83b056ca2f9
       selector:
         matchLabels:
           os: darwin
