@@ -38,11 +38,10 @@ brews:
       name: kubectl-reap
     homepage: https://github.com/guppy0130/kubectl-reap
     description: kubectl plugin that deletes unused Kubernetes resources
+    directory: Formula
 
 krews:
   - name: "kubectl-reap"
-    ids:
-      - "kubectl-reap"
     goarm: 7
     description: kubectl plugin that deletes unused Kubernetes resources
     short_description: kubectl plugin that deletes unused Kubernetes resources
