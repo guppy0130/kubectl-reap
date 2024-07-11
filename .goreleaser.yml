@@ -41,10 +41,12 @@ brews:
     directory: Formula
 
 krews:
-  - name: "kubectl-reap"
-    goarm: 7
-    description: kubectl plugin that deletes unused Kubernetes resources
+  - name: "reap"
     short_description: kubectl plugin that deletes unused Kubernetes resources
+    description: >-
+      This plugin deletes unused Kubernetes resources. It supports Pods,
+      ConfigMaps, Secrets, PersistentVolumes, PersistentVolumeClaims, Jobs,
+      PodDisruptionBudgets, and HorizontalPodAutoscalers.
     homepage: https://github.com/guppy0130/kubectl-reap
     repository:
       owner: guppy0130
